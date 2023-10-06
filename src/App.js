@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import { useEffect } from 'react';
 import './App.css';
+import { url } from './endpoints';
 
 function App() {
+// useEffect makes the call twice. Need to fix
+  useEffect(() => {
+    axios.get(url)
+    .then((response) => {
+      console.log(response.data);
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>
+        My React app
+      </h1>
+      <p>Communicating with the ASP.NET Core</p>
     </div>
   );
 }
